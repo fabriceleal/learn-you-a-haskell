@@ -13,7 +13,9 @@ sayme 4 = "four"
 sayme 5 = "five"
 sayme _ = "not between one and four..."
 
-
 factorial :: (Integral a) => a -> a
 factorial 0 = 1
 factorial x = x * factorial (x - 1)
+
+addVectors :: (Num a) => (a, a) -> (a, a) -> (a, a)
+addVectors (a1, a2) (b1, b2) = (a1 + b1, a2 + b2)

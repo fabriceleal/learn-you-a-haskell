@@ -22,3 +22,9 @@ ghci> :r
 ```
 ghci> :t <something>
 ```
+
+### Quit from ghci
+
+```
+ghci> :quit
+```

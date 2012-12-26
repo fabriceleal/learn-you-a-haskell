@@ -28,3 +28,4 @@ twoOfTriple (_, s, _) = s
 
 threeOfTriple :: (a, b, c) -> c
 threeOfTriple (_, _, t) = t
+

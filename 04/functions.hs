@@ -13,3 +13,7 @@ sayme 4 = "four"
 sayme 5 = "five"
 sayme _ = "not between one and four..."
 
+
+factorial :: (Integral a) => a -> a
+factorial 0 = 1
+factorial x = x * factorial (x - 1)

@@ -28,3 +28,15 @@ ghci> :t <something>
 ```
 ghci> :quit
 ```
+
+## Import module
+
+```
+ghci> :m + <module.name>
+```
+
+Like this:
+
+```
+ghci> :m + Data.List
+```

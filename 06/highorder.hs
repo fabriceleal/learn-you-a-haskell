@@ -34,7 +34,8 @@ r5 = zipWith' (+) [1,2,3] [4,5,6]
 r6 = zipWith' f [1,2,3] [4,5,6]
 r7 = zipWith' (++) ["joy ", "sonic ", "massic "] ["division", "youth", "attack"]
 
--- Which is the same thing as flip' :: (a -> b -> c) -> b -> a -> c
+-- Which is the same thing as: 
+-- flip' :: (a -> b -> c) -> b -> a -> c
 flip' :: (a -> b -> c) -> (b -> a -> c)
 flip' f y x = f x y
 
@@ -80,4 +81,13 @@ chain n
 
 listOfFuns = map (*) [0..]
 res18 = (listOfFuns !! 4) 5
+
+-- A lambda example. I now this is the same as (+2)
+add2 = \x -> x + 2
+
+sum' :: (Num a) => [a] -> a
+-- Which is the same as: 
+-- sum' = foldl (+) 0
+sum' xs = foldl (\acc x -> acc + x) 0 xs
+
 

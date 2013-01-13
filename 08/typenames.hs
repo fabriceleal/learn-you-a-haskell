@@ -127,3 +127,82 @@ nums = [8, 6, 4, 1, 7, 3, 5]
 numsTree = foldr treeInsert EmptyTree nums
 have3 = 3 `treeElem` numsTree
 have10 = 10 `treeElem` numsTree
+
+-- ***
+
+class MyEq a where
+      (.==) :: a -> a -> Bool
+      (./=) :: a -> a -> Bool
+      x .== y = not (x ./= y)
+      x ./= y = not (x .== y)
+
+data TrafficLight = Red | Yellow | Green
+
+instance MyEq TrafficLight where
+	 Red .== Red = True
+	 Green .== Green = True
+	 Yellow .== Yellow = True
+	 _ .== _ = False
+
+instance Show TrafficLight where
+	 show Red = "shtap!"
+	 show Green = "go!"
+	 show Yellow = "easy there!"
+
+instance (Eq m) => MyEq (Maybe m) where
+	 Just x .== Just y = x == y
+	 Nothing .== Nothing = True
+	 _ .== _ = False
+
+-- ***
+
+class YesNo a where
+      yesno :: a -> Bool
+
+instance YesNo Int where
+	 yesno 0 = False
+	 yesno _ = True
+
+instance YesNo [a] where
+	 yesno [] = False
+	 yesno _ = True
+
+instance YesNo Bool where
+	 yesno = id
+
+instance YesNo (Maybe a) where
+	 yesno (Just _) = True
+	 yesno Nothing = False
+
+instance YesNo (Tree a) where
+	 yesno EmptyTree = False
+	 yesno _ = True
+
+instance YesNo TrafficLight where
+	 yesno Red = False
+	 yesno _ = True
+
+yesnoIf :: (YesNo y) => y -> a -> a -> a
+yesnoIf yesnoVal yesResult noResult = if yesno yesnoVal then yesResult else noResult
+
+-- ***
+
+--class Functor f where
+--      fmap :: (a -> b) -> f a -> f b
+
+--instance Functor Maybe where
+--	 fmap f (Just x) = Just (f x)
+--	 fmap f Nothing = Nothing
+
+instance Functor Tree where
+	 fmap f EmptyTree = EmptyTree
+	 fmap f (Node x leftsub rightsub) = Node (f x) (fmap f leftsub) (fmap f rightsub)
+
+data EEither a b = ELeft a | ERight b
+
+instance Functor (EEither a) where
+	 fmap f (ELeft a) = ELeft a
+	 fmap f (ERight a) = ERight (f a)
+
+-- ***
+

@@ -90,4 +90,17 @@ sum' :: (Num a) => [a] -> a
 -- sum' = foldl (+) 0
 sum' xs = foldl (\acc x -> acc + x) 0 xs
 
+-- dont forget: foldl foldr foldl1 foldr1
+-- also: scanl scanr scanl1 scanr1
 
+-- Which is the same as sum (map sqrt [1..30])
+res19 = sum $ map sqrt [1..30]
+res20 = map ($ 3) [(4+), (10*), (^2), sqrt]
+
+-- 3*(1+ x)
+res21 = (1+) . (3*)
+res22 = map (negate . abs) [5, -3, -6, 7, -3, 2, -19, 24]
+res23 = map (negate . sum . tail) [[1..5], [3..6], [1..7]]
+
+res24 = sum (replicate 5 (max 6.7 8.9))
+res25 = sum . replicate 5 . max 6.7 $ 8.9

@@ -104,3 +104,18 @@ res23 = map (negate . sum . tail) [[1..5], [3..6], [1..7]]
 
 res24 = sum (replicate 5 (max 6.7 8.9))
 res25 = sum . replicate 5 . max 6.7 $ 8.9
+
+-- The following three functions are equivalent
+
+oddSquareSum1 :: Integer
+oddSquareSum1 = sum (takeWhile (< 10000) (filter odd (map (^2) [1..])))
+
+oddSquareSum2 :: Integer
+oddSquareSum2 = sum . takeWhile (< 10000) . filter odd $ map (^2) [1..]
+
+oddSquareSum3 :: Integer
+oddSquareSum3 =
+	      let oddSquares = filter odd $ map (^2) [1..]
+	      	  belowLimit = takeWhile (<10000) oddSquares
+	      in sum belowLimit
+

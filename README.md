@@ -17,10 +17,16 @@ ghci> :l file
 ghci> :r
 ```
 
-### Check the type of something
+### Check the type of a value
 
 ```
-ghci> :t <something>
+ghci> :t <value>
+```
+
+### Check the kind of a type
+
+```
+ghci> :k <type>
 ```
 
 ### Quit from ghci

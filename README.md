@@ -46,3 +46,9 @@ Like this:
 ```
 ghci> :m + Data.List
 ```
+
+## Compile
+
+```
+ghc --make file_no_extension
+```

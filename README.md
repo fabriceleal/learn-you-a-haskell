@@ -52,3 +52,9 @@ ghci> :m + Data.List
 ```
 ghc --make file_no_extension
 ```
+
+## Run immediately
+
+```
+runhaskell file_no_extension
+```
